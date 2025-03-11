@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 5rem;
+  background: $secondary-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  height: 80px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primary-color;
+    text-shadow: 2px 2px 4px $text-shadow-color;
+  }
+
+  nav {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+  
+      li {
+        a {
+          text-decoration: none;
+          font-size: 1.1rem;
+          font-weight: bold;
+          color: $primary-color;
+          text-shadow: 1px 1px 3px $text-shadow-color;
+          position: relative;
+          padding: 0.3rem 0;
+          transition: all 0.3s ease-in-out;
+  
+          // 👇 Nueva animación del subrayado en hover
+          &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: $primary-color;
+            transition: width 0.3s ease, left 0.3s ease;
+          }
+  
+          &:hover {
+            transform: scale(1.05); // Ligeramente más grande
+          }
+  
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
+  
+          // 👇 Estilo para el link activo
+          &.active {
+            font-weight: bold;
+            color: white;
+          }
+        }
+      }
+    }
+  }  
+}
